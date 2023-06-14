@@ -7,9 +7,9 @@ const authRoutes = require('./routes/auth.routes');
 const db = require('./models')
 
 const app = express();
-const corsOptions = {origin: 'http://localhost:8081'};
+const corsOptions = {origin: 'http://localhost:3000'};
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3010;
 
 app.use(cors(corsOptions));
 
