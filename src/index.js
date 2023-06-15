@@ -7,6 +7,8 @@ const authRoutes = require('./routes/auth.routes');
 const productsRoutes = require('./routes/products.routes')
 const db = require('./models')
 
+const populateProducts = require('./helpers/populateProducts')
+
 const app = express();
 const corsOptions = {origin: 'http://localhost:3000'};
 
@@ -19,7 +21,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 db.sequelize.sync({force: true})
-    .then(() => console.log("Droped and Synced db"))
+    .then(() => {
+        console.log("Droped and Synced db")
+        populateProducts()
+    })
     .catch((error) => console.log(`Failed to sync db: ${error.message}`))
 
 app.use(userRoutes);
