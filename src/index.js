@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
+const productsRoutes = require('./routes/products.routes')
 const db = require('./models')
 
 const app = express();
@@ -23,6 +24,7 @@ db.sequelize.sync({force: true})
 
 app.use(userRoutes);
 app.use(authRoutes);
+app.use(productsRoutes);
 
 app.listen(port, () => {
     console.log(`Express server listening on port ${port}`)
