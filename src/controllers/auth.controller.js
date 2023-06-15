@@ -36,6 +36,14 @@ exports.signin = (req, res) => {
     const username = req.body.username
     const password = req.body.password
 
+    if(!password){
+        return res.status(400).send({error: "Password required"})
+    }
+
+    if(!username){
+        return res.status(400).send({error: "Username required"})
+    }
+
     User.findOne({
         where: {
             username: username
